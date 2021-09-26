@@ -1,0 +1,50 @@
+<%= form_with(model: taximeter, url: taximeter.id.nil? ? company_taximeters_path : company_taximeter_path(taximeter.company, taximeter)) do |form| %>
+  <% if taximeter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(taximeter.errors.count, "error") %> prohibited this taximeter from being saved:</h2>
+
+      <ul>
+        <% taximeter.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :start_price %>
+    <%= form.text_field :start_price %>
+  </div>
+  <div class="field">
+    <%= form.label :km_price %>
+    <%= form.text_field :km_price %>
+  </div>
+  <div class="field">
+    <%= form.label :minute_price %>
+    <%= form.text_field :minute_price %>
+  </div>
+  <div class="field">
+    <%= form.label :minimum_price %>
+    <%= form.text_field :minimum_price %>
+  </div>
+  <div class="field">
+    <%= form.label :time_from %>
+    <%= form.time_field :time_from %>
+  </div>
+  <div class="field">
+    <%= form.label :time_to %>
+    <%= form.time_field :time_to %>
+  </div>
+  <div class="field">
+    <%= form.label :days %>
+    <% i = 0 %>
+    <% for day in Date::ABBR_DAYNAMES %>
+      <%= check_box_tag "taximeter[days][]", day, taximeter.days.nil? ? false : taximeter.days.include?(day)  %>
+      <%= Date::DAYNAMES[i] %> <br>
+      <% i+=1 %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

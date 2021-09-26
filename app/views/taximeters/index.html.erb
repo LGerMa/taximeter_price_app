@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Taximeters</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Start price</th>
+    <th>Km price</th>
+    <th>Minute price</th>
+    <th>Minimum price</th>
+    <th>Time from</th>
+    <th>Time to</th>
+    <th>days</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @taximeters.each do |taximeter| %>
+    <tr>
+      <td><%= taximeter.start_price %></td>
+      <td><%= taximeter.km_price %></td>
+      <td><%= taximeter.minute_price %></td>
+      <td><%= taximeter.minimum_price %></td>
+      <td><%= taximeter.time_from_formatted %></td>
+      <td><%= taximeter.time_to_formatted %></td>
+      <td><%= taximeter.days %></td>
+      <td><%= link_to 'Show', company_taximeter_path(taximeter.company, taximeter) %></td>
+      <td><%= link_to 'Edit', edit_company_taximeter_path(taximeter.company, taximeter) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Taximeter', new_company_taximeter_path %> |
+<%= link_to 'Back', companies_path %>

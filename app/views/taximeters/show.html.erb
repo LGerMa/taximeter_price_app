@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start price:</strong>
+  <%= @taximeter.start_price %>
+</p>
+<p>
+  <strong>Km price:</strong>
+  <%= @taximeter.km_price %>
+</p>
+<p>
+  <strong>Minute price:</strong>
+  <%= @taximeter.minute_price %>
+</p>
+<p>
+  <strong>Minimum price:</strong>
+  <%= @taximeter.minimum_price %>
+</p>
+<p>
+  <strong>Time from:</strong>
+  <%= @taximeter.time_from_formatted %>
+</p>
+<p>
+  <strong>Time to:</strong>
+  <%= @taximeter.time_to_formatted %>
+</p>
+<p>
+  <strong>Days:</strong>
+  <%= @taximeter.days %>
+</p>
+
+<%= link_to 'Edit', edit_company_taximeter_path(@taximeter.company, @taximeter) %> |
+<%= link_to 'Back', company_taximeters_path %>
