@@ -11,8 +11,10 @@ class Taximeter < ApplicationRecord
   validate :time_to_less_than_time_from, if: :time_from? && :time_to?
 
   #save time_from and time_to in minutes, to be used in filter actions
-  before_save :save_time_from_minutes, if: :time_from?
-  before_save :save_time_to_minutes, if: :time_to?
+  before_validation :save_time_from_minutes, if: :time_from?
+  before_validation :save_time_to_minutes, if: :time_to?
+
+  validate :validate_times_days, if: :days? && :time_from? && :time_to?
 
   attr_accessor :total_calculated
 
@@ -31,6 +33,23 @@ class Taximeter < ApplicationRecord
   scope :search_by_time, -> (time) {
     where('time_from_minutes <= ? AND time_to_minutes >= ?', time, time )
   }
+
+  def validate_times_days
+    t=Taximeter.where('company_id', self::company_id)
+               .where('(? BETWEEN time_from_minutes AND time_to_minutes) OR (? BETWEEN time_from_minutes AND time_to_minutes )',
+                      self::time_from_minutes, self::time_to_minutes)
+    t = t.where('id <> ?', self::id) unless self::id.nil?
+    unless t.blank?
+      matches = false
+      t.each do |t_aux|
+        matches = self::days.split(',').map {|day| t_aux.days.split(',').include? day}.any?
+        break if matches
+      end
+      if matches
+        errors.add(:days,"There at least one register in the same range of times and days")
+      end
+    end
+  end
 
   def time_to_less_than_time_from
     if time_to < time_from
