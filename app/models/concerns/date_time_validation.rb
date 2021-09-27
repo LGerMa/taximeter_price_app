@@ -2,7 +2,7 @@ module DateTimeValidation
   extend ActiveSupport::Concern
 
   def formatted_time(time = Time.now)
-    time.strftime('%H:%M %p')
+    time.strftime('%H:%M')
   end
 
   def get_date_abbr(date = Date.current)

@@ -29,5 +29,5 @@
   <%= @taximeter.days %>
 </p>
 
-<%= link_to 'Edit', edit_company_taximeter_path(@taximeter.company, @taximeter) %> |
-<%= link_to 'Back', company_taximeters_path %>
+<%= link_to 'Edit', edit_company_taximeter_path(@taximeter.company, @taximeter), class: 'button' %>
+<%= link_to 'Back', company_taximeters_path, class: 'button button-primary' %>

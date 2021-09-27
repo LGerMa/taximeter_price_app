@@ -1,6 +1,12 @@
 class SearchesController < ApplicationController
 
   def index
+    @params = {
+      :date_travel => DateTime.now,
+      :distance => 0,
+      :duration => 0
+    }
+
   end
 
   def search
@@ -19,11 +25,11 @@ class SearchesController < ApplicationController
       result.push(tx)
     end
     @search_result = result.sort_by(&:total_calculated)
-    @params = [
-      'date_travel' => params[:date_travel],
-      'distance' => params[:distance],
-      'duration' => params[:duration]
-    ]
+    @params = {
+      :date_travel => params[:date_travel],
+      :distance => params[:distance],
+      :duration => params[:duration]
+    }
     respond_to do |format|
       #format.html { redirect_to search_path }
       format.html { render 'index' }

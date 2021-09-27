@@ -26,8 +26,8 @@
       <td><%= taximeter.time_from_formatted %></td>
       <td><%= taximeter.time_to_formatted %></td>
       <td><%= taximeter.days %></td>
-      <td><%= link_to 'Show', company_taximeter_path(taximeter.company, taximeter) %></td>
-      <td><%= link_to 'Edit', edit_company_taximeter_path(taximeter.company, taximeter) %></td>
+      <td><%= link_to 'Show', company_taximeter_path(taximeter.company, taximeter), class: 'button' %></td>
+      <td><%= link_to 'Edit', edit_company_taximeter_path(taximeter.company, taximeter), class: 'button' %></td>
     </tr>
   <% end %>
   </tbody>
@@ -35,5 +35,5 @@
 
 <br>
 
-<%= link_to 'New Taximeter', new_company_taximeter_path %> |
-<%= link_to 'Back', companies_path %>
+<%= link_to 'New Taximeter', new_company_taximeter_path, class: 'button' %>
+<%= link_to 'Back', companies_path, class: 'button button-primary' %>

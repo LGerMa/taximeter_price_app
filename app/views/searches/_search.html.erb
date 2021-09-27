@@ -1,26 +1,26 @@
-<h2>Search form</h2>
-
 <div class="search_taximeter">
-  <%= p search %>
   <%= form_with scope: :search, url: search_path, local: true do |form| %>
-    <div class="fields">
-      <%= form.label :date_travel, "Enter date and time" %>
-      <%= form.datetime_field :date_travel, min: DateTime.now.to_date, required: false %>
-    </div>
-    <div class="fields">
-      <%= form.label :distance, "Enter distance (km)" %>
-      <%= form.number_field :distance, required:false %>
-    </div>
-    <div class="fields">
-      <%= form.label :duration, "Enter duration travel (min)" %>
-      <%= form.number_field :duration, required: false %>
-    </div>
-    <div class="fields">
-      <%= form.label :seats, "Enter number of seats" %>
-      <%= form.number_field :seats %>
+    <div class="row">
+      <div class="three columns">
+        <%= form.label :date_travel, "Enter date and time" %>
+        <%= form.datetime_field :date_travel, min: DateTime.now.to_date, required: true, value: search[:date_travel].to_datetime.strftime('%Y-%m-%dT%H:%M')
+        %>
+      </div>
+      <div class="three columns">
+        <%= form.label :distance, "Enter distance (km)" %>
+        <%= form.text_field :distance, required: true, value: search[:distance] %>
+      </div>
+      <div class="three columns">
+        <%= form.label :duration, "Enter duration travel (min)" %>
+        <%= form.text_field :duration, required: true, value: search[:duration] %>
+      </div>
+      <div class="three columns">
+        <%= form.label :seats, "Enter number of seats" %>
+        <%= form.number_field :seats %>
+      </div>
     </div>
     <div class="actions">
-      <%= form.submit "Search" %>
+      <%= form.submit "Search", :class => 'button button-primary' %> <%= link_to "Cancel", search_path, :class => 'button' %>
     </div>
   <% end %>
 </div>

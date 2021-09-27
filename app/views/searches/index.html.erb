@@ -8,27 +8,29 @@
     <strong>Taximeter not founds</strong>
   <% end %>
   <% @search_result.each do |taximeter| %>
-    <p>
-      <strong>Company name</strong>
-      <%= taximeter.company.name %>
-    </p>
-    <p>
-      <strong>Start price: </strong>
-      <%= taximeter.start_price %>
-    </p>
-    <p>
-      <strong>Price per km: </strong>
-      <%= taximeter.km_price %>
-    </p>
-    <p>
-      <strong>Minute price: </strong>
-      <%= taximeter.minute_price %>
-    </p>
-    <p>
-      <strong>Total: </strong>
-      <%= taximeter.total_calculated %>
-    </p>
+    <div class="row search_result">
+      <p>
+        <strong>Company name</strong>
+        <%= taximeter.company.name %>
+      </p>
+      <p>
+        <strong>Start price: </strong>
+        <%= taximeter.start_price %>
+      </p>
+      <p>
+        <strong>Price per km: </strong>
+        <%= taximeter.km_price %>
+      </p>
+      <p>
+        <strong>Minute price: </strong>
+        <%= taximeter.minute_price %>
+      </p>
+      <p>
+        <strong>Total: </strong>
+        <%= taximeter.total_calculated %>
+      </p>
+    </div>
+    <br>
+
   <% end %>
-<%else %>
-  <h2>Find taximeter price</h2>
 <% end %>
