@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails application to calculate list of taximeter prices
 
-Things you may want to cover:
+Stack:
 
-* Ruby version
+* Ruby version [2.7.1]
+* Rails version [6.1.4]
+* Database [SQLite]
 
-* System dependencies
+Deployment instructions:
 
-* Configuration
+To install dependencies:
 
-* Database creation
+`$ bundle install`
 
-* Database initialization
+To install database:
 
-* How to run the test suite
+`$ rails db:create db:migrate`
 
-* Services (job queues, cache servers, search engines, etc.)
+Also seeds was implemented using Faker data
 
-* Deployment instructions
+`$ rails db:seed`
 
-* ...
+There was a home page in root, when you can find some interesting links
+with implemented
